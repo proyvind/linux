@@ -2899,7 +2899,4 @@ static void __exit mxc_hdmi_i2c_exit(void)
 	i2c_del_driver(&mxc_hdmi_i2c_driver);
 }
 
-module_init(mxc_hdmi_i2c_init);
-module_exit(mxc_hdmi_i2c_exit);
-
 MODULE_AUTHOR("Freescale Semiconductor, Inc.");

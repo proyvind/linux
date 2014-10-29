@@ -858,7 +858,7 @@ static int imx_asrc_dma_config(struct asrc_pair_params *params,
 		return -EINVAL;
 	}
 
-	slave_config.dma_request0 = 0;
+	slave_config.dma_request = 0;
 	slave_config.dma_request1 = 0;
 
 	if (in) {

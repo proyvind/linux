@@ -669,8 +669,8 @@ static int fsl_esai_probe(struct platform_device *pdev)
 		goto failed_get_dma;
 	}
 
-	esai->filter_data_tx.dma_request0 = dma_events[0];
-	esai->filter_data_rx.dma_request0 = dma_events[1];
+	esai->filter_data_tx.dma_request = dma_events[0];
+	esai->filter_data_rx.dma_request = dma_events[1];
 	esai->filter_data_tx.peripheral_type = IMX_DMATYPE_ESAI;
 	esai->filter_data_rx.peripheral_type = IMX_DMATYPE_ESAI;
 

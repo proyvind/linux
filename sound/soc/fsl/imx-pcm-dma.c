@@ -86,10 +86,10 @@ static void imx_pcm_dma_set_config_from_dai_data(
 	 * set to zero.
 	*/
 	if (filter_data) {
-		slave_config->dma_request0 = filter_data->dma_request0;
+		slave_config->dma_request = filter_data->dma_request;
 		slave_config->dma_request1 = filter_data->dma_request1;
 	} else {
-		slave_config->dma_request0 = 0;
+		slave_config->dma_request = 0;
 		slave_config->dma_request1 = 0;
 	}
 }

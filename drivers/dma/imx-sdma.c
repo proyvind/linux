@@ -987,7 +987,7 @@ static int sdma_alloc_chan_resources(struct dma_chan *chan)
 	}
 
 	sdmac->peripheral_type = data->peripheral_type;
-	sdmac->event_id0 = data->dma_request0;
+	sdmac->event_id0 = data->dma_request;
 	sdmac->event_id1 = data->dma_request1;
 
 	clk_enable(sdmac->sdma->clk_ipg);
@@ -1271,8 +1271,8 @@ static int sdma_control(struct dma_chan *chan, enum dma_ctrl_cmd cmd,
 			sdmac->word_size = dmaengine_cfg->dst_addr_width;
 		}
 		sdmac->direction = dmaengine_cfg->direction;
-		if (dmaengine_cfg->dma_request0)
-			sdmac->event_id0 = dmaengine_cfg->dma_request0;
+		if (dmaengine_cfg->dma_request)
+			sdmac->event_id0 = dmaengine_cfg->dma_request;
 		if (dmaengine_cfg->dma_request1)
 			sdmac->event_id1 = dmaengine_cfg->dma_request1;
 		return sdma_config_channel(sdmac);
@@ -1486,7 +1486,7 @@ static struct dma_chan *sdma_xlate(struct of_phandle_args *dma_spec,
 	if (dma_spec->args_count != 3)
 		return NULL;
 
-	data.dma_request0 = dma_spec->args[0];
+	data.dma_request = dma_spec->args[0];
 	data.peripheral_type = dma_spec->args[1];
 	data.priority = dma_spec->args[2];
 	data.dma_request1 = 0;

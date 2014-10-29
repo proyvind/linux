@@ -739,7 +739,7 @@ static int hdmi_sdma_config(struct snd_pcm_substream *substream,
 	priv->dma_channel->private = &priv->dma_data;
 
 	slave_config.direction = DMA_TRANS_NONE;
-	slave_config.dma_request0 = 0;
+	slave_config.dma_request = 0;
 	slave_config.dma_request1 = 0;
 
 	ret = dmaengine_slave_config(priv->dma_channel, &slave_config);

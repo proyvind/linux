@@ -89,7 +89,7 @@ static int asrc_p2p_request_channel(struct snd_pcm_substream *substream)
 	/* reconfig memory to FIFO dma request */
 	dma_params_fe->addr = asrc_p2p->asrc_ops.asrc_p2p_per_addr(
 						asrc_p2p->asrc_index, 1);
-	fe_filter_data->dma_request0 = asrc_p2p->dmarx[asrc_p2p->asrc_index];
+	fe_filter_data->dma_request = asrc_p2p->dmarx[asrc_p2p->asrc_index];
 	dma_params_fe->maxburst = dma_params_be->maxburst;
 
 	dma_cap_zero(mask);
@@ -101,7 +101,7 @@ static int asrc_p2p_request_channel(struct snd_pcm_substream *substream)
 	asrc_p2p->asrc_p2p_dma_data.priority        = DMA_PRIO_HIGH;
 	asrc_p2p->asrc_p2p_dma_data.dma_request1    = asrc_p2p->dmatx[asrc_p2p->asrc_index];
 	/* need to get target device's dma dma_addr, burstsize */
-	asrc_p2p->asrc_p2p_dma_data.dma_request0    = be_filter_data->dma_request0;
+	asrc_p2p->asrc_p2p_dma_data.dma_request    = be_filter_data->dma_request;
 
 	/* Request channel */
 	asrc_p2p->asrc_p2p_dma_chan =
@@ -124,7 +124,7 @@ static int asrc_p2p_request_channel(struct snd_pcm_substream *substream)
 	slave_config.dst_addr       = dma_params_be->addr;
 	slave_config.dst_addr_width = buswidth;
 	slave_config.dst_maxburst   = dma_params_be->maxburst * 2;
-	slave_config.dma_request0   = be_filter_data->dma_request0;
+	slave_config.dma_request   = be_filter_data->dma_request;
 	slave_config.dma_request1   = asrc_p2p->dmatx[asrc_p2p->asrc_index];
 
 	ret = dmaengine_slave_config(asrc_p2p->asrc_p2p_dma_chan,
