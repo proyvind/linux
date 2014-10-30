@@ -204,6 +204,7 @@ int mipi_dsi_pkt_write(struct mipi_dsi_info *mipi_dsi,
 
 	return 0;
 }
+EXPORT_SYMBOL(mipi_dsi_pkt_write);
 
 int mipi_dsi_pkt_read(struct mipi_dsi_info *mipi_dsi,
 				u8 data_type, u32 *buf, int len)
@@ -265,6 +266,7 @@ int mipi_dsi_pkt_read(struct mipi_dsi_info *mipi_dsi,
 		return -ERANGE;
 	}
 }
+EXPORT_SYMBOL(mipi_dsi_pkt_read);
 
 int mipi_dsi_dcs_cmd(struct mipi_dsi_info *mipi_dsi,
 				u8 cmd, const u32 *param, int num)
