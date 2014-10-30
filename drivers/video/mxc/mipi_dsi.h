@@ -99,13 +99,13 @@ int mipi_dsi_pkt_read(struct mipi_dsi_info *mipi,
 int mipi_dsi_dcs_cmd(struct mipi_dsi_info *mipi,
 				u8 cmd, const u32 *param, int num);
 
-#ifdef CONFIG_FB_MXC_TRULY_WVGA_SYNC_PANEL
+#if defined(CONFIG_FB_MXC_TRULY_WVGA_SYNC_PANEL) || defined(CONFIG_FB_MXC_TRULY_WVGA_SYNC_PANEL_MODULE)
 void mipid_hx8369_get_lcd_videomode(struct fb_videomode **mode, int *size,
 		struct mipi_lcd_config **data);
 int mipid_hx8369_lcd_setup(struct mipi_dsi_info *);
 #endif
 
-#ifndef CONFIG_FB_MXC_TRULY_WVGA_SYNC_PANEL
+#if !defined(CONFIG_FB_MXC_TRULY_WVGA_SYNC_PANEL) && !defined(CONFIG_FB_MXC_TRULY_WVGA_SYNC_PANEL_MODULE)
 #error "Please configure MIPI LCD panel, we cannot find one!"
 #endif
 
