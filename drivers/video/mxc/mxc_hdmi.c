@@ -2900,3 +2900,4 @@ static void __exit mxc_hdmi_i2c_exit(void)
 }
 
 MODULE_AUTHOR("Freescale Semiconductor, Inc.");
+MODULE_LICENSE("GPL");
