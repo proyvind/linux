@@ -540,6 +540,8 @@ static int hdmi_core_get_of_property(struct platform_device *pdev)
 
 	return err;
 }
+EXPORT_SYMBOL(mxc_hdmi_ipu_id);
+EXPORT_SYMBOL(mxc_hdmi_disp_id);
 
 /* Need to run this before phy is enabled the first time to prevent
  * overflow condition in HDMI_IH_FC_STAT2 */
